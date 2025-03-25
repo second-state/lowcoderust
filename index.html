@@ -405,6 +405,14 @@
                 <p class="feature-description">Comprehensive guides on integrating our tools with popular IDEs like Zed, Cursor, VS Code, and more. Coming soon: MCP Server for enhanced capabilities.</p>
                 <a href="#ide-integration" class="cta-button" style="margin-top: 1.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Learn More</a>
             </div>
+
+            <!-- New feature card for "Explain this PR to me" -->
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3 class="feature-title">Explain this PR to me</h3>
+                <p class="feature-description">Translate complex Rust pull requests into clear, business-focused explanations for product managers and non-technical stakeholders.</p>
+                <a href="#explain-pr" class="cta-button" style="margin-top: 1.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Learn More</a>
+            </div>
         </div>
     </div>
 </section>
@@ -736,6 +744,90 @@ fn generate_token(&mut self) -> Token {
                             <span style="font-size: 0.9rem; font-weight: bold;">Use Result instead of unwrap()</span>
                         </div>
                         <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #555;">Replace error-prone unwrap() calls with proper error handling using the Result type.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- New section for "Explain this PR to me" -->
+<section id="explain-pr" class="tool-section" style="padding: 8rem 0; background-color: var(--bg-light);">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="color: var(--rust-dark); font-size: 2.5rem; margin-bottom: 1.5rem; position: relative; padding-bottom: 1rem;">
+                    Explain this PR to me
+                    <span style="position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));"></span>
+                </h2>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #444; line-height: 1.7;">Bridge the gap between technical and non-technical team members. Our PR Explainer translates complex Rust code changes into business-focused summaries that everyone can understand, keeping your entire team aligned.</p>
+                
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--rust-dark); font-size: 1.3rem; margin-bottom: 1rem;">Key Features</h3>
+                    <ul style="list-style-position: inside; color: #555;">
+                        <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
+                            <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
+                            <strong>Business Impact Analysis</strong> - Understand how code changes affect product features and business goals
+                        </li>
+                        <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
+                            <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
+                            <strong>Jargon Translation</strong> - Technical terms explained in plain language for non-developers
+                        </li>
+                        <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
+                            <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
+                            <strong>Visual Summaries</strong> - Diagrams and visual aids to illustrate complex changes
+                        </li>
+                        <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
+                            <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
+                            <strong>Risk Assessment</strong> - Clear explanations of potential risks or impacts on user experience
+                        </li>
+                        <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
+                            <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
+                            <strong>Customized Explanations</strong> - Tailor explanations based on the recipient's role and technical background
+                        </li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="cta-button" style="font-size: 1.1rem;">Try PR Explainer</a>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px; background-color: #fff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
+                <div style="background-color: #f0f0f0; border-radius: 8px 8px 0 0; padding: 0.75rem; border-bottom: 1px solid #ddd;">
+                    <div style="font-weight: bold; color: #333; display: flex; align-items: center;">
+                        <span style="display: inline-block; width: 10px; height: 10px; background-color: #FF5F56; border-radius: 50%; margin-right: 5px;"></span>
+                        <span style="display: inline-block; width: 10px; height: 10px; background-color: #FFBD2E; border-radius: 50%; margin-right: 5px;"></span>
+                        <span style="display: inline-block; width: 10px; height: 10px; background-color: #27C93F; border-radius: 50%; margin-right: 10px;"></span>
+                        PR #156: Implement multi-factor authentication
+                    </div>
+                </div>
+                <div style="background-color: white; padding: 1rem; border-radius: 0 0 8px 8px;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="color: var(--rust-dark); font-weight: bold; margin-bottom: 0.5rem;">LowCodeRust PR Explainer</div>
+                        <div style="padding: 0.75rem; background-color: #f9f7ff; border-left: 3px solid var(--rust-orange); margin-top: 0.5rem;">
+                            <p style="margin: 0 0 0.5rem 0; font-weight: bold;">📝 Business Summary</p>
+                            <p style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">This PR adds multi-factor authentication to protect user accounts, meeting the security requirements for enterprise customers.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="background-color: #e1f5fe; color: #0288d1; font-size: 0.8rem; padding: 0.25rem 0.5rem; border-radius: 3px; margin-right: 0.5rem;">Product Impact</span>
+                            <span style="font-size: 0.9rem; font-weight: bold;">New User Flow</span>
+                        </div>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #555;">Users will now see an additional verification step during login. This affects the onboarding flow in the following ways:</p>
+                        <ul style="font-size: 0.9rem; color: #555; margin: 0.5rem 0 0 1.5rem;">
+                            <li>First-time users will be prompted to set up 2FA during registration</li>
+                            <li>Existing users will be prompted to enable 2FA on next login</li>
+                            <li>Recovery options are provided for users who lose access to verification devices</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="background-color: #f1f8e9; color: #689f38; font-size: 0.8rem; padding: 0.25rem 0.5rem; border-radius: 3px; margin-right: 0.5rem;">Timeline</span>
+                            <span style="font-size: 0.9rem; font-weight: bold;">Ready for Q2 Launch</span>
+                        </div>
+                        <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #555;">This feature is complete and fully tested. It can be included in the Q2 release as planned, with no impact on other roadmap items.</p>
                     </div>
                 </div>
             </div>
