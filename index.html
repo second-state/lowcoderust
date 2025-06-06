@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,12 +56,22 @@
     
     .hero {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        text-align: center;
-        padding: 6rem 0;
+        padding: 4rem 0;
         position: relative;
         z-index: 1;
+    }
+    
+    .hero-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        width: 100%;
+    }
+    
+    .hero-main {
+        flex: 1;
+        text-align: left;
     }
     
     .hero h1 {
@@ -72,12 +83,136 @@
         animation: fadeInDown 1s ease-out;
     }
     
-    .hero p {
+    .hero-main p {
         font-size: 1.4rem;
-        max-width: 800px;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
         color: rgba(255, 255, 255, 0.9);
         animation: fadeInUp 1s ease-out 0.3s both;
+        max-width: 600px;
+    }
+    
+    .hero-highlight {
+        flex: 0 0 340px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 2.5rem;
+        animation: fadeInRight 1s ease-out 0.5s both;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-highlight::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: shimmer 3s infinite;
+    }
+    
+    .hero-highlight-badge {
+        display: inline-block;
+        background: #FFEB3B;
+        color: #333;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .hero-highlight h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+        color: var(--text-light);
+        font-weight: 600;
+    }
+    
+    .hero-highlight-desc {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+    
+    .hero-highlight-features {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-highlight-features span {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: var(--text-light);
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+    
+    .hero-highlight-cta {
+        display: block;
+        background: white;
+        color: var(--rust-orange);
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero-highlight-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes shimmer {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 968px) {
+        .hero-content {
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .hero-main {
+            text-align: center;
+        }
+        
+        .hero-main p {
+            max-width: none;
+        }
+        
+        .hero-highlight {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 400px;
+        }
     }
     
     .cta-button {
@@ -296,6 +431,24 @@
         padding: 8rem 0;
     }
     
+    .badge {
+        display: inline-block;
+        background-color: rgba(232, 76, 35, 0.1);
+        color: var(--rust-orange);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin: 0 0.3rem 0.5rem 0;
+        border: 1px solid rgba(232, 76, 35, 0.2);
+    }
+    
+    .badge.primary {
+        background-color: var(--rust-orange);
+        color: white;
+        border-color: var(--rust-orange);
+    }
+    
     @keyframes fadeInDown {
         from {
             opacity: 0;
@@ -360,9 +513,25 @@
 <header>
     <div class="container">
         <div class="hero">
-            <h1>LowCodeRust</h1>
-            <p>Supercharge your Rust development with our suite of AI-powered tools designed specifically for Rust developers.</p>
-            <a href="#features" class="cta-button">Explore Our Tools <span>→</span></a>
+            <div class="hero-content">
+                <div class="hero-main">
+                    <h1>LowCodeRust</h1>
+                    <p>Supercharge your Rust development with our suite of AI-powered tools designed specifically for Rust developers.</p>
+                    <a href="#features" class="cta-button">Explore All Tools <span>→</span></a>
+                </div>
+                
+                <div class="hero-highlight">
+                    <span class="hero-highlight-badge">New Release</span>
+                    <h2>RustCoder</h2>
+                    <p class="hero-highlight-desc">MCP server enabling LLMs to work with Rust code - generate, compile, and fix errors seamlessly</p>
+                    <div class="hero-highlight-features">
+                        <span>MCP Server</span>
+                        <span>Code Generation</span>
+                        <span>Auto Fix</span>
+                    </div>
+                    <a href="https://github.com/decentralized-mcp/RustCoder" class="hero-highlight-cta">Try RustCoder Now →</a>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -380,9 +549,13 @@
             
             <div class="feature-card">
                 <div class="feature-icon">⚙️</div>
-                <h3 class="feature-title">Rust Code Generator</h3>
-                <p class="feature-description">Generate production-ready Rust code from natural language descriptions. Save time and focus on solving complex problems.</p>
-                <a href="https://github.com/WasmEdge/WasmEdge/issues/4038" class="cta-button" style="margin-top: 1.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Learn More</a>
+                <h3 class="feature-title">RustCoder</h3>
+                <div style="margin-bottom: 0.8rem;">
+                    <span class="badge primary">Available Now</span>
+                    <span class="badge">MCP Server</span>
+                </div>
+                <p class="feature-description">An MCP server for LLMs to work with Rust code. It can do code generation, compile, and fix errors.</p>
+                <a href="https://github.com/decentralized-mcp/RustCoder" class="cta-button" style="margin-top: 1.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Get Started</a>
             </div>
             
             <div class="feature-card">
@@ -402,7 +575,7 @@
             <div class="feature-card">
                 <div class="feature-icon">📚</div>
                 <h3 class="feature-title">IDE Integration</h3>
-                <p class="feature-description">Comprehensive guides on integrating our tools with popular IDEs like Zed, Cursor, VS Code, and more. Coming soon: MCP Server for enhanced capabilities.</p>
+                <p class="feature-description">Comprehensive guides on integrating our tools with popular IDEs like Zed, Cursor, VS Code, and more. RustCoder MCP Server is now available for seamless integration!</p>
                 <a href="#ide-integration" class="cta-button" style="margin-top: 1.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Learn More</a>
             </div>
 
@@ -481,38 +654,60 @@ if a > b { a } else { b }
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
             <div style="flex: 1; min-width: 300px;">
                 <h2 style="color: var(--rust-dark); font-size: 2.5rem; margin-bottom: 1.5rem; position: relative; padding-bottom: 1rem;">
-                    Rust Code Generator
+                    RustCoder
                     <span style="position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));"></span>
                 </h2>
-                <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #444; line-height: 1.7;">Transform natural language descriptions into production-ready Rust code. Our AI-powered code generator helps you focus on solving problems rather than writing boilerplate code.</p>
+                <div style="margin-bottom: 1.5rem;">
+                    <span class="badge primary">Available Now</span>
+                    <span class="badge">MCP Server</span>
+                </div>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #444; line-height: 1.7;">RustCoder is an MCP server that enables LLMs to work effectively with Rust code. It provides comprehensive support for code generation, compilation, and automatic error fixing - all through a simple MCP interface.</p>
                 
                 <div style="margin: 2rem 0;">
                     <h3 style="color: var(--rust-dark); font-size: 1.3rem; margin-bottom: 1rem;">Key Features</h3>
                     <ul style="list-style: none; color: #555;">
                         <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
                             <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
-                            <strong>Natural Language Input</strong> - Describe what you need and get functional Rust code
+                            <strong>Code Generation</strong> - Generate Rust code from natural language descriptions
                         </li>
                         <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
                             <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
-                            <strong>Smart Boilerplate</strong> - Generate repetitive structures like traits, implementations, and tests
+                            <strong>Compilation Support</strong> - Compile Rust code directly through the MCP interface
                         </li>
                         <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
                             <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
-                            <strong>Idiomatic Rust</strong> - Output follows Rust best practices and community conventions
+                            <strong>Error Fixing</strong> - Automatically diagnose and fix compilation errors
                         </li>
                         <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
                             <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
-                            <strong>Comment Documentation</strong> - Includes helpful documentation comments explaining the generated code
+                            <strong>MCP Protocol</strong> - Standard Model Context Protocol for seamless LLM integration
                         </li>
                         <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.5rem;">
                             <span style="position: absolute; left: 0; color: var(--rust-orange);">•</span>
-                            <strong>Project Context Awareness</strong> - Takes into account your existing codebase for consistent output
+                            <strong>LLM Optimized</strong> - Designed specifically for LLMs to understand and work with Rust
                         </li>
                     </ul>
                 </div>
                 
-                <a href="https://github.com/WasmEdge/WasmEdge/issues/4038" class="cta-button" style="font-size: 1.1rem;">See Progress on GitHub</a>
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--rust-dark); font-size: 1.3rem; margin-bottom: 1rem;">How It Works</h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 8px; flex: 1; min-width: 200px;">
+                            <h4 style="color: var(--rust-orange); margin-bottom: 0.5rem;">1. MCP Server</h4>
+                            <p style="font-size: 0.9rem; color: #666;">RustCoder runs as an MCP server that LLMs can connect to</p>
+                        </div>
+                        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 8px; flex: 1; min-width: 200px;">
+                            <h4 style="color: var(--rust-orange); margin-bottom: 0.5rem;">2. LLM Integration</h4>
+                            <p style="font-size: 0.9rem; color: #666;">Your AI assistant can generate, compile, and fix Rust code</p>
+                        </div>
+                        <div style="background-color: #f5f5f5; padding: 1rem; border-radius: 8px; flex: 1; min-width: 200px;">
+                            <h4 style="color: var(--rust-orange); margin-bottom: 0.5rem;">3. Seamless Workflow</h4>
+                            <p style="font-size: 0.9rem; color: #666;">Natural language to working Rust code in one conversation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://github.com/decentralized-mcp/RustCoder" class="cta-button" style="font-size: 1.1rem;">Get Started on GitHub</a>
             </div>
             
             <div style="flex: 1; min-width: 300px; background-color: #fff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease; overflow: auto; max-height: 600px;">
@@ -888,28 +1083,25 @@ fn generate_token(&mut self) -> Token {
                 </div>
             </div>
             
-            <!-- MCP Server - Coming Soon -->
+            <!-- MCP Server - Now Available -->
             <div style="background-color: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease; position: relative;">
-                <div style="position: absolute; top: 1.5rem; right: 1.5rem; background-color: var(--rust-orange); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; z-index: 2;">
-                    Coming Soon
+                <div style="position: absolute; top: 1.5rem; right: 1.5rem; background-color: #4CAF50; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; z-index: 2;">
+                    Available Now
                 </div>
-                <div style="aspect-ratio: 16/9; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center; position: relative;">
-                    <div style="position: absolute; background-color: rgba(0,0,0,0.6); width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                        </svg>
-                        <p style="font-size: 1.2rem; margin-top: 1rem;">MCP Server</p>
+                <div style="aspect-ratio: 16/9; background-color: #000; display: flex; justify-content: center; align-items: center; position: relative;">
+                    <div style="position: absolute; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+                        <img src="/api/placeholder/400/225" alt="MCP Server Integration" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;" />
+                        <div style="position: absolute; width: 80px; height: 80px; background-color: rgba(232, 76, 35, 0.9); border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                            <div style="width: 0; height: 0; border-top: 20px solid transparent; border-bottom: 20px solid transparent; border-left: 30px solid white; margin-left: 8px;"></div>
+                        </div>
                     </div>
                 </div>
                 <div style="padding: 2rem;">
                     <h3 style="color: var(--rust-dark); font-size: 1.5rem; margin-bottom: 1rem;">MCP Server Integration</h3>
                     <p style="font-size: 1rem; color: #555; line-height: 1.6; margin-bottom: 1.5rem;">
-                        Our upcoming MCP Server will enable seamless integration with your development environment, providing advanced Rust development capabilities through a dedicated local server.
+                        RustCoder is now available as an MCP server! Connect it to any MCP-compatible IDE or AI assistant to enable powerful Rust development capabilities including code generation, compilation, and automatic error fixing.
                     </p>
-                    <a href="#" class="cta-button" style="display: inline-block; margin-top: 1rem; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Stay Tuned</a>
+                    <a href="https://github.com/decentralized-mcp/RustCoder" class="cta-button" style="display: inline-block; margin-top: 1rem; font-size: 0.9rem; padding: 0.6rem 1.2rem;">Get Started</a>
                 </div>
             </div>
         </div>
@@ -923,17 +1115,17 @@ fn generate_token(&mut self) -> Token {
         <div class="testimonial-grid">
             <div class="testimonial-card">
                 <p class="testimonial-text">"The Rust Learning Assistant helped me overcome the learning curve of Rust's ownership system. It's like having a mentor available 24/7."</p>
-                <p class="testimonial-author">- Alex Chen, Software Engineer</p>
+                <p class="testimonial-author">Alex Chen, Software Engineer</p>
             </div>
             
             <div class="testimonial-card">
                 <p class="testimonial-text">"The PR Reviewer catches issues that even our senior developers miss. The human-in-the-loop approach gives us confidence in the review process."</p>
-                <p class="testimonial-author">- Sarah Johnson, Tech Lead</p>
+                <p class="testimonial-author">Sarah Johnson, Tech Lead</p>
             </div>
             
             <div class="testimonial-card">
                 <p class="testimonial-text">"Rust Code Generator saved me hours of writing repetitive code. I describe what I need, and it gives me production-ready Rust with proper error handling."</p>
-                <p class="testimonial-author">- Michael Rodriguez, Freelance Developer</p>
+                <p class="testimonial-author">Michael Rodriguez, Freelance Developer</p>
             </div>
         </div>
     </div>
